@@ -63,3 +63,17 @@ Ingestion API/ - FastAPI source code and Dockerfile.
 Processing Svc/ - Async consumer source code and Dockerfile.
 
 charts/pipeline/ - Helm templates (Deployment, Service, ScaledObject) and configuration values.
+
+
+
+-----------------------------------------------------
+## Development Status & Notes
+
+Due to current circumstances, I was able to begin work on this task on Saturday (March 14th) and completed the core implementation within one day.
+
+**Current Testing Status:**
+* **Logic & Integration:** Verified locally using Postman, Docker, and Redis.
+* **Kubernetes/Helm:** The Helm charts and KEDA configurations are written and structured, though final cluster-wide verification is pending the installation of Minikube and the Helm CLI on this environment.
+
+**Next Steps:**
+I intend to complete the bonus requirements (Monitoring/Liveness probes) by Monday and will push the updates to GitHub. My primary focus was to deliver a functional, high-quality core requirement within a short timeframe.
