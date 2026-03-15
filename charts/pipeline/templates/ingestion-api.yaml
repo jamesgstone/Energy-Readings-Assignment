@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingestion-api
+spec:
+  replicas: {{ .Values.ingestion.replicaCount }}
+  selector:
+    matchLabels:
+      app: ingestion-api
+  template:
+    metadata:
+      labels:
+        app: ingestion-api
+    spec:
+      containers:
+      - name: ingestion-api
+        image: {{ .Values.ingestion.image }}
+        ports:
+        - containerPort: 8000
+        env:
+        - name: REDIS_HOST
+          value: "redis-service"
+        - name: REDIS_PORT
+          value: "6379"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingestion-api-service
+spec:
+  type: NodePort # שינוי ל-NodePort כדי שתוכל לגשת אליו מחוץ ל-Minikube
+  selector:
+    app: ingestion-api
+  ports:
+  - port: 8000
+    targetPort: 8000
+    nodePort: 30001

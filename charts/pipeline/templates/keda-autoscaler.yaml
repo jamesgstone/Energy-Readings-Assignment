@@ -1,0 +1,17 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: processing-scaler
+  namespace: default
+spec:
+  scaleTargetRef:
+    name: processing-service 
+  minReplicaCount: 1
+  maxReplicaCount: 5
+  triggers:
+  - type: redis-streams
+    metadata:
+      address: redis-service:6379
+      stream: energy_readings
+      consumerGroup: processing_group
+      pendingEntriesCount: "5"

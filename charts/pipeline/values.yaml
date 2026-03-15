@@ -1,0 +1,7 @@
+ingestion:
+  image: ingestion-api:v1
+  replicaCount: 1
+
+processing:
+  image: processing-service:v1
+  replicaCount: 1
