@@ -1,0 +1,26 @@
+stages:
+  - lint
+  - build
+
+# checks helm chart
+helm-lint:
+  stage: lint
+  image: 
+    name: alpine/helm:3.14.2
+    entrypoint: [""]
+  script:
+    - helm lint charts/pipeline
+
+# builds docker images
+build-images:
+  stage: build
+  image: docker:24.0.5
+  services:
+    - docker:24.0.5-dind
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+  script:
+    - docker build -t ingestion-api:v1 "./Ingestion API"
+    - docker build -t processing-service:v1 "./Processing Svc"
+  only:
+    - main
