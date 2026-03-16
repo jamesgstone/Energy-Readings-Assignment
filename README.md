@@ -80,3 +80,12 @@ I intend to complete the bonus requirement
 and will push the updates to GitHub. My primary focus was to deliver a functional, high-quality core requirement within a short timeframe.
 
 **CI/CD Pipeline Note:** > The current GitLab (GitHub action can be used) workflow focuses on validation (helm lint) and image construction (docker build). In a real-world scenario, a docker push step would be integrated to ship these images to a registry like Docker Hub or Artifactory.
+
+## GitOps Integration (ArgoCD)
+To move towards a full GitOps model, this project is structured to be easily integrated with **ArgoCD**:
+
+* **Automated Sync:** An ArgoCD `Application` manifest can be pointed at the `charts/pipeline` directory.
+* **Continuous Deployment:** Once the CI pipeline pushes a new image tag to the registry, ArgoCD will detect the change in `values.yaml` (or via an image updater) and automatically pull the latest version into the cluster.
+* **Self-Healing:** ArgoCD will ensure that any manual changes made to the cluster (drift) are automatically reverted to match the state defined in this repository.
+
+> **Note:** If needed, an `application.yaml` manifest for ArgoCD can be provided to define the destination cluster and sync policy.
