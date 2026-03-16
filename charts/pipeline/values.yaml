@@ -1,7 +1,35 @@
+
+assignmentId: "550e8400-e29b-41d4-a716-446655440000"
+
 ingestion:
   image: ingestion-api:v1
   replicaCount: 1
+  service:
+    port: 8000
+    nodePort: 30001
 
 processing:
   image: processing-service:v1
   replicaCount: 1
+  service:
+    port: 8000
+
+redis:
+  image: redis:latest
+  service:
+    port: 6379
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+autoscaling:
+  minReplicas: 1
+  maxReplicas: 5
+  threshold: 5
+  stream: "energy_readings"
+  group: "processing_group"
