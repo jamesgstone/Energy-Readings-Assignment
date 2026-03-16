@@ -76,6 +76,7 @@ Due to current circumstances, I was able to begin work on this task on Saturday 
 * **Kubernetes/Helm:** The Helm charts and KEDA configurations are written and structured, though final cluster-wide verification is pending the installation of Minikube and the Helm CLI on this environment.
 
 **Next Steps:**
-I intend to complete the bonus requirements (Monitoring/Liveness probes) by Monday and will push the updates to GitHub. My primary focus was to deliver a functional, high-quality core requirement within a short timeframe.
+I intend to complete the bonus requirement
+and will push the updates to GitHub. My primary focus was to deliver a functional, high-quality core requirement within a short timeframe.
 
 **CI/CD Pipeline Note:** > The current GitLab (GitHub action can be used) workflow focuses on validation (helm lint) and image construction (docker build). In a real-world scenario, a docker push step would be integrated to ship these images to a registry like Docker Hub or Artifactory.
