@@ -27,7 +27,8 @@ Build the images locally before deploying to the cluster. Ensure you are in the 
 The deployment is managed via a Helm chart located in the charts/pipeline directory. This handles the creation of Deployments, Services (with proper Assignment-ID labels), and the KEDA ScaledObject.
 
 **From the project root**
-helm install energy-pipeline ./charts/pipeline
+
+>helm install energy-pipeline ./charts/pipeline
 
 # Validation and Testing
 *Step 1: Ingest Data*
@@ -71,7 +72,8 @@ CI-CD/ - gitlab-ci.yml
 
 
 
-**CI/CD Pipeline Note:** > The current GitLab (GitHub action can be used) workflow focuses on validation (helm lint) and image construction (docker build). In a real-world scenario, a docker push step would be integrated to ship these images to a registry like Docker Hub or Artifactory.
+## CI/CD Pipeline Note:
+The current **GitLab** (GitHub action can be used instead) workflow focuses on validation (helm lint) and image construction (docker build). In a real-world scenario, a docker push step would be integrated to ship these images to a registry like Docker Hub or Artifactory.
 
 ## GitOps Integration (ArgoCD)
 To move towards a full GitOps model, this project is structured to be easily integrated with **ArgoCD**:
