@@ -1,3 +1,4 @@
+# if needed a unit test stage can be added first
 stages:
   - lint
   - build
@@ -24,3 +25,5 @@ build-images:
     - docker build -t processing-service:v1 "./Processing Svc"
   only:
     - main
+
+#  if needed a push to registry (docker hub/artifactory) command can be added
